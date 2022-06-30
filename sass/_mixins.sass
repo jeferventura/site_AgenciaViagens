@@ -1,0 +1,16 @@
+@use 'variables'
+
+@mixin container
+  margin: 0 auto
+  max-width: variables.$container-width
+  width: 100%
+
+@mixin flex-center
+    display: flex
+    justify-content: center
+    align-items: center
+
+@mixin bg-img-banner($img)
+    background-image: url('../images/#{$img}')
+    background-size: cover
+    background-repeat: no-repeat

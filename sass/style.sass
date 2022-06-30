@@ -1,11 +1,389 @@
+@use 'variables'
+@use 'mixins'
+
 *
     box-sizing: border-box
     margin: 0px
     padding: 0px
+    font-family: Arial, Helvetica, sans-serif
 
 body 
     height: 100%
+    background-color: #e0e0e0
+    
+    .col-25
+        width: 25%
+
+        @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+            width: 50%
+            
+    .col-50
+        width: 50%
+
+        @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+            width: 100%
+
+    .col-100
+        width: 100%
 
     #modal-root
         display: none
+    
+    img
+        width: 100%
+
+    
+// end body
+
+.container
+    @include mixins.container
+
+header 
+    width: 100%
+    padding: 5px
+    background: white
+
+    .header
+        display: flex
+        padding: 10px 0
+
+        @media screen and (min-width: 320px) and (max-width: 375px)
+            justify-content: center
+
+        &-logo
+            margin-right: 20px 
+            @include mixins.flex-center
+            
+            img
+                width: 100%
+                max-width: 30px
+
+                @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+                    max-width: 20px
+
+        &-title
+            display: flex
+            justify-content: right
+            align-items: center
+
+            h1
+                color: variables.$color-primary
+                font-size: 25px
+                font-weight: 400
+
+                @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+                    font-size: 20px
+    // end .header
+// end header
+
+/* --- style main */
+main
+    #banner-main
+        @include mixins.bg-img-banner('bahia.jpg')
+        height: 50em
+        margin-top: 0
+        position: relative
+        top: -10px
+
+        @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+            height: 64rem
+            position: static
+
+        .form
+            background-color: white
+            position: relative
+            top: 50px
+    // end #banner-main
+
+
+    .form-top
+        width: 100%
+        background-color: variables.$color-primary
+        @include mixins.flex-center
+        padding: 7px 0
+        margin-top: 10px
+
+        img
+            width: 100%
+            max-width: 20px
+            margin-right: 10px
+        h3
+            font-size: 17px
+            color: white
+            font-weight: 300
+    // end .form-top
+
+    .form-fields
+        padding: 40px
+        color: variables.$color-text
+
+        @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+            padding: 15px
+
+        h2
+            font-size: 20px
+            margin-bottom: 20px
+
+        .form-group
+            width: 100%
+            padding: 10px 0
+
+            @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+                display: flex
+                flex-direction: column
+
+            label
+                width: 100%
+                font-size: 15px
+                margin-bottom: 5px
+            
+            input[type=text],[type=email], [type=date], [type=tel], select
+                width: 100%
+                height: 30px
+                padding: 0 5px
+                border-radius: 2px
+                margin: 3px 0
+
+                @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+                    display: block
+        
+
+            &:nth-of-type(5), &:nth-of-type(6)
+                padding-bottom: 10px
+        // end .form-group
+
+        .col-50
+            float: left
+            overflow: auto
+            height: auto
+            padding: 10px 0
+
+            @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+                width: 100%
+                float: none
+
+
+            &:first-child
+                padding-right: 10px
+
+                @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+                    padding: 0
+        // end .col-50
+        
+        .inputs
+            margin: 3px 0
+            display: flex
+
+            @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+                display: block
+
+            &-checkbox
+                @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+                
+
+            input[type=radio], [type=checkbox]
+                display: inline
+                margin-top: 5px
+
+            label
+                margin-right: 20px
+        // end .inputs
+        
+        button
+            padding: 8px 20px
+            font-size: 14px
+            font-weight: 200
+            color: white
+            background-color: variables.$color-primary
+            border: 0
+            letter-spacing: 1px
+            cursor: pointer
+
+            &:hover
+                background-color: variables.$color-primary-hover
+        // end button    
+    // end .form-fields
+
+    .ofertas
+        margin-top: 30px
+        height: 100%
+
+        @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+            padding: 2%
+
+        h3
+            padding: 10px 0
+
+        p
+            font-size: 15px
+            padding: 5px 0px
+
+        &-img
+            display: flex
+
+            @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+                display: block
+                width: 100%
+        
+            #card-1
+                @include mixins.bg-img-banner('rio.jpg')
+                width: calc(100% - 10px)
+                height: 100%
+                margin-bottom: 0
+                display: flex
+
+                @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+                    height: 10rem
+                    margin-bottom: 10px
+                
+
+            .ofertas-img-single
+                margin-right: 10px
+                display: flex
+                flex-direction: row
+                flex-wrap: wrap
+                align-items: flex-end
+
+                img
+                    width: 100%
+                    object-fit: contain 
+
+                    @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+                        width: 200%
+                    
+                &:nth-of-type(1)
+                    display: block
+                    margin-left: 0
+
+                p
+                    display: block
+                    width: 100%
+                    background-color: rgba(0, 0, 0, 0.521)
+                    color: #FFF
+                    padding: 5px
+
+                
+                #card-2
+                    @include mixins.bg-img-banner('manaus.jpg')
+
+                #card-3
+                    @include mixins.bg-img-banner('saopaulo.jpg')
+
+                #card-4
+                    @include mixins.bg-img-banner('rio.jpg')
+
+                #card-5
+                    @include mixins.bg-img-banner('maranhao.jpg')
+
+
+                &-city
+                    height: 12rem
+                    max-height: 250px
+                    margin: 0 5px
+                    display: flex
+                    width: calc(50% - 10px)
+                    align-items: flex-end
+
+                    @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+                        margin: 5px 
+                        padding: 0
+
+                    &:nth-of-type(2), &:nth-of-type(1)
+                        margin-bottom: 17px
+    // end .ofertas
+
+    .natureza
+        margin-top: 30px
+
+        @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+            padding: 2%
+
+        h3
+            padding: 10px 0
+
+        p
+            font-size: 15px
+            padding: 5px 0px
+
+        &-wrapper
+            display: flex
+            padding: 10px 0
+
+            @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+                display: block
+                padding: 2%
+
+            .natureza-box
+                margin-right: 20px
+
+                @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+                    margin-bottom: 30px
+
+                &-text
+                    background-color: white
+                    padding: 20px
+
+                    p
+                        font-weight: bold
+
+                    span
+                        color: #708196
+    //end .Natureza
+// end main
+
+footer
+    background-color: variables.$color-primary
+    margin-top: 20px
+    padding: 20px 0
+    color: #FFF
+
+    .container
+        display: flex
+        justify-content: space-between
+
+        .col-25
+                margin: 2%
+
+        @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+            display: block
+            padding: 20px
+
+            .col-25
+                width:100%
+                margin-bottom: 40px
+        
+        @media screen and (min-width: variables.$mobile-min-tablet) and (max-width: variables.$mobile-max-tablet)
+            
+            .col-25
+                width:50%
+                margin: 2%
+                
+
+        .footer
+
+            @media screen and (min-width: variables.$mobile-min-smartphone) and (max-width: variables.$mobile-max-smartphone)
+                margin-bottom: 40px
+
+            &-single
+                display: flex
+                flex-direction: row
+                margin: 10px 0
+
+
+                p
+                    font-size: 13px
+                
+                img
+                    width: 100%
+                    max-width: 15px
+                    margin-right: 10px
+
+            h3
+                display: block
+            
+            
+                
+
+            
+
 
